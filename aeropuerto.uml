@@ -1,0 +1,51 @@
+@startuml
+class PistaAeropuerto {
+    - disponible: boolean
+    + actualizarDisponibilidad(nuevaDisponibilidad: boolean): void
+}
+
+class Avion {
+    - marca: String
+    - modelo: String
+    - listoParaDespegar: boolean
+    - alas: Alas
+    - motores: Motores
+    - ruedas: Ruedas
+    - cabina: Cabina
+    + recibirPasajeros(): void
+    + despegar(): void
+    + setListoParaDespegar(listo: boolean): void
+}
+
+class Alas {
+    - largoEnMetros: String
+    - buenEstado: boolean
+    + pruebaAlas(): void
+}
+
+class Motores {
+    - tieneCombustible: boolean
+    - buenEstado: boolean
+    + cargarCombustible(): void
+}
+
+class Ruedas {
+    - infladas: boolean
+    - buenEstado: boolean
+    + inflar(): void
+}
+
+class Cabina {
+    - capacidadPasajeros: int
+    - numeroPuertas: int
+    - puertasCerradas: boolean
+    - buenEstado: boolean
+    + cerrarPuertas(): void
+}
+
+PistaAeropuerto --> Avion : "1 pista para"
+Avion *-- Alas
+Avion *-- Motores
+Avion *-- Ruedas
+Avion *-- Cabina
+@enduml
